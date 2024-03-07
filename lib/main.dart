@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pagoplux_flutter/src/pages/demoppx.dart';
+import 'package:pagoplux_flutter/src/routes/routes.dart' as routes;
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       initialRoute: '/',
-      routes: {'/': (BuildContext context) => PayboxDemoPage()},
+      routes: routes.getApplicationRoutes(),
       debugShowCheckedModeBanner: false,
     );
   }

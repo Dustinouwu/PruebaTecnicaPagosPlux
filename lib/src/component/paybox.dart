@@ -23,6 +23,7 @@ class ModalPagoPluxView extends StatelessWidget {
   final Function onClose;
 
   ModalPagoPluxView({required this.pagoPluxModel, required this.onClose});
+  
 
   /*
    * Se construye la vista 
