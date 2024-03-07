@@ -12,6 +12,7 @@ import 'package:pagoplux_flutter/src/model/response_model.dart';
 class PayboxDemoPage extends StatefulWidget {
   @override
   _PayboxDemoPageState createState() => _PayboxDemoPageState();
+  String? token;
 }
 
 class _PayboxDemoPageState extends State<PayboxDemoPage> {
@@ -28,11 +29,19 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
 
   // Se construiye el view<
   Widget build(BuildContext context) {
+    final String _token = ModalRoute.of(context)!.settings.arguments as String;
     openPpx();
     return Scaffold(
       appBar: AppBar(
         title: Text('Plugin Flutter PPX'),
-        actions: [Icon(Icons.access_alarm)],
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, 'history', arguments: _token );
+            },
+            icon: Icon(Icons.access_alarm),
+          )
+        ],
       ),
       body: Container(
           padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 4),
@@ -50,8 +59,10 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
     this._paymentModelExample?.payboxRemail = 'da.nielrolesppx@gmail.com';
     this._paymentModelExample?.payboxSendmail = emailController.text;
     this._paymentModelExample?.payboxRename = 'Negocio Integracion Flutter';
-    this._paymentModelExample?.payboxBase0 = double.tryParse(valueController.text) ?? 0;
-    this._paymentModelExample?.payboxBase12 = double.tryParse(valueController.text) ?? 0 * 0.12;
+    this._paymentModelExample?.payboxBase0 =
+        double.tryParse(valueController.text) ?? 0;
+    this._paymentModelExample?.payboxBase12 =
+        double.tryParse(valueController.text) ?? 0 * 0.12;
     this._paymentModelExample?.payboxDescription = 'Pago desde Flutter';
     this._paymentModelExample?.payboxProduction = false;
     this._paymentModelExample?.payboxDirection = addressController.text;
@@ -122,7 +133,7 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
             ),
           ),
           SizedBox(height: 40),
-           FloatingActionButton(
+          FloatingActionButton(
             child: Icon(Icons.payments_rounded),
             onPressed: () {
               openPpx(); // Update payment model before opening modal

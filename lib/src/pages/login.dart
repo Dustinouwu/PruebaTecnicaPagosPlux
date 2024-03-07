@@ -47,10 +47,17 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         const SizedBox(height: 20),
         ElevatedButton(
-          onPressed: () {
-            fetchData();
-            
-            Navigator.pushNamed(context, 'demoppx');
+          onPressed: () async {
+            await fetchData();
+            if (_token != null) {
+              Navigator.pushNamed(
+                context,
+                'demoppx',
+                arguments: _token,
+                
+              );
+              print('Token: $_token');
+            }
           },
           child: const Text('Login'),
         ),
@@ -81,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
       /* print('Error: $errorMessage'); */
       final tokenMatch = RegExp(r"'([^']*)'").firstMatch(errorMessage);
       final token = tokenMatch?.group(1);
-      print('Token: $token');
+      /* print('Token: $token'); */
       setState(() {
         _token = token;
       });
