@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
@@ -43,11 +46,39 @@ class _LoginScreenState extends State<LoginScreen> {
         const SizedBox(height: 20),
         ElevatedButton(
           onPressed: () {
+            fetchData();
             Navigator.pushNamed(context, 'demoppx');
           },
           child: const Text('Login'),
         ),
       ],
     );
+  }
+
+  Future<dynamic> fetchData() async {
+    const String username = 'o3NXHGmfujN3Tyzp1cyCDu3xst';
+    const String password = 'TkBhZQP3zwMyx3JwC5HeFqzXM4p0jzsXp0hTbWRnI4riUtJT';
+    final String basicAuth =
+        'Basic ${base64Encode(utf8.encode('$username:$password'))}';
+
+    final Uri url = Uri.parse('https://apipre.pagoplux.com/intv1');
+    final Map<String, String> headers = {'Authorization': basicAuth};
+
+    final response = await http.post(
+      url,
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      print('Autenticación exitosa');
+      return jsonDecode(response.body);
+    } else {
+      print('Error en la autenticación: ${response.statusCode}');
+      final errorMessage = response.body;
+      /* print('Error: $errorMessage'); */
+      final tokenMatch = RegExp(r"'([^']*)'").firstMatch(errorMessage);
+      final token = tokenMatch?.group(1);
+      print('Token: $token');
+    }
   }
 }
