@@ -87,14 +87,14 @@ class Detail {
   // String toJson() => json.encode(toMap());
 
   factory Detail.fromMap(Map<String, dynamic> json) => Detail(
-        token: json["token"],
-        amount: json["amount"],
-        cardType: json["cardType"],
-        cardInfo: json["cardInfo"],
-        cardIssuer: json["cardIssuer"],
-        clientId: json["clientID"],
-        clientName: json["clientName"],
-        fecha: json["fecha"],
+        token: json["token"] ?? "",
+        amount: json["amount"] ?? "",
+        cardType: json["cardType"] ?? "",
+        cardInfo: json["cardInfo"]   ?? "",
+        cardIssuer: json["cardIssuer"] ?? "",
+        clientId: json["clientID"] ?? "",
+        clientName: json["clientName"] ?? "",
+        fecha: json["fecha"] ?? "",
       );
 
   // Map<String, dynamic> toMap() => {

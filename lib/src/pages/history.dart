@@ -1,7 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:pagoplux_flutter/src/model/response_model.dart';
 
 class HistoryScreen extends StatefulWidget {
   HistoryScreen({super.key});
@@ -20,15 +20,46 @@ class _HistoryScreenState extends State<HistoryScreen> {
         title: Text('Historial de pagos'),
       ),
       body: Center(
-        child: Column(
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                fetchData();
-              },
-              child: Text('cLICK'),
-            )
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              FutureBuilder(
+                future: fetchData(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else {
+                    dynamic responseData = snapshot.data;
+                    List<dynamic> transactions =
+                        responseData['detail']['transactionsData'];
+        
+                    return SizedBox(
+                      // Envuelve el ListView con un Container
+                      height: MediaQuery.of(context).size.height,
+                      child: ListView.builder(
+                        itemCount: transactions.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          var transaction = transactions[index];
+                          return ListTile(
+                            title: Text(
+                                'Descripción: ${transaction['descripcion']}'),
+                            subtitle: Text('Monto: ${transaction['monto']}'),
+                            onTap: (){
+                              
+                            },
+                            // Agrega aquí más detalles que desees mostrar
+                          );
+                        },
+                        
+                      ),
+                    );
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -43,8 +74,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
         'https://apipre.pagoplux.com/intv1/integrations/getTransactionsEstablishmentResource');
     final Map<String, String> headers = {
       'Content-Type': 'application/json',
-      'Authorization':
-          'key= bzNOWEhHbWZ1ak4zVHl6cDFjeUNEdTN4c3Q6VGtCaFpRUDN6d015eDNKd0M1SGVGcXpYTTRwMGp6c1hwMGhUYldSbkk0cmlVdEpU'
+      'Authorization': 'key= $token'
     };
 
     final Map<String, dynamic> requestBody = {
