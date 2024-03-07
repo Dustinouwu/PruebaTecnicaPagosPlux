@@ -49,7 +49,7 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
     this._paymentModelExample = PagoPluxModel();
     this._paymentModelExample?.payboxRemail = 'da.nielrolesppx@gmail.com';
     this._paymentModelExample?.payboxSendmail = emailController.text;
-    this._paymentModelExample?.payboxRename = 'PagoPlux Shop';
+    this._paymentModelExample?.payboxRename = 'Negocio Integracion Flutter';
     this._paymentModelExample?.payboxBase0 = double.tryParse(valueController.text) ?? 0;
     this._paymentModelExample?.payboxBase12 = double.tryParse(valueController.text) ?? 0 * 0.12;
     this._paymentModelExample?.payboxDescription = 'Pago desde Flutter';
@@ -58,7 +58,7 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
     this._paymentModelExample?.payboxSendname = namesController.text;
     this._paymentModelExample?.payboxClientPhone = telephoneController.text;
     this._paymentModelExample?.payboxClientIdentification = '0992664673001';
-    this._paymentModelExample?.payboxEnvironment = 'product';
+    this._paymentModelExample?.payboxEnvironment = 'sandbox';
   }
 
   Widget crearTop(BuildContext context) {
@@ -66,7 +66,8 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
   }
 
   obtenerDatos(PagoResponseModel datos) {
-    this.voucher = 'Voucher: ' + datos.detail.token;
+    voucher = 'Voucher: ${datos.detail.token}';
+    print(voucher);
 
     setState(() {});
     print('LLego ' + datos.detail.token);

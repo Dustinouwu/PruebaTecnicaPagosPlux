@@ -11,6 +11,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  String? _token;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ElevatedButton(
           onPressed: () {
             fetchData();
+            
             Navigator.pushNamed(context, 'demoppx');
           },
           child: const Text('Login'),
@@ -79,6 +82,10 @@ class _LoginScreenState extends State<LoginScreen> {
       final tokenMatch = RegExp(r"'([^']*)'").firstMatch(errorMessage);
       final token = tokenMatch?.group(1);
       print('Token: $token');
+      setState(() {
+        _token = token;
+      });
+      return token;
     }
   }
 }
