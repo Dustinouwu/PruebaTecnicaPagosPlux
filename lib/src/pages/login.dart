@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:pagoplux_flutter/src/ui/circle.dart';
 import 'package:pagoplux_flutter/src/ui/icon_container.dart';
 import 'package:pagoplux_flutter/src/utils/globals.dart';
@@ -26,73 +23,75 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
       body: Center(
-        child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            /* color: Color.fromRGBO(13, 94, 207, 1), */
-            color: Colors.white,
-            /* margin: const EdgeInsets.all(10.0), */
-            child: Stack(
-              alignment: Alignment.center,
-              children: <Widget>[
-                Positioned(
-                  top: -primaryColorSize * 0.5,
-                  right: -primaryColorSize * 0.2,
-                  child: Circle(
-                    size: size.width * 0.8,
-                    colors: const [
-                      Color.fromRGBO(255, 189, 73, 1),
-                      Color.fromRGBO(248, 175, 50, 1),
-                      /* Color.fromRGBO(54, 213, 161, 1), */
-                    ],
-                  ),
-                ),
-                Positioned(
-                  top: -secondaryColorSize * 0.55,
-                  left: -secondaryColorSize * 0.15,
-                  child: Circle(
-                    size: size.width * 0.57,
-                    colors: const [
-                      Color.fromRGBO(54, 213, 161, 1),
-                      Color.fromRGBO(95, 233, 187, 1),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  top: primaryColorSize * 0.53,
-                  child: Column(children: <Widget>[
-                    IconContainer(
-                      size: responsive.wp(10),
+        child: SingleChildScrollView(
+          child: Container(
+              width: double.infinity,
+              height: responsive.height,
+              /* color: Color.fromRGBO(13, 94, 207, 1), */
+              color: Colors.white,
+              /* margin: const EdgeInsets.all(10.0), */
+              child: Stack(
+                alignment: Alignment.center,
+                children: <Widget>[
+                  Positioned(
+                    top: -primaryColorSize * 0.5,
+                    right: -primaryColorSize * 0.2,
+                    child: Circle(
+                      size: size.width * 0.8,
+                      colors: const [
+                        Color.fromRGBO(255, 189, 73, 1),
+                        Color.fromRGBO(248, 175, 50, 1),
+                        /* Color.fromRGBO(54, 213, 161, 1), */
+                      ],
                     ),
-                    SizedBox(height: responsive.dp(5)),
-                    Text(
-                      "Simplifica tus pagos, maximiza tus ventas",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: responsive.dp(1.5),
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FontStyle.normal,
-                          letterSpacing: 1.5,
-                          wordSpacing: 2.0,
-                          height: 1.5),
-                      textAlign: TextAlign.center,
+                  ),
+                  Positioned(
+                    top: -secondaryColorSize * 0.55,
+                    left: -secondaryColorSize * 0.15,
+                    child: Circle(
+                      size: size.width * 0.57,
+                      colors: const [
+                        Color.fromRGBO(54, 213, 161, 1),
+                        Color.fromRGBO(95, 233, 187, 1),
+                      ],
                     ),
-                  ]),
-                ),
-                const LoginForm()
-              ],
-            )
-
-            /*  Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [_loginForm(context)],
-          ), */
-            ),
+                  ),
+                  Positioned(
+                    top: primaryColorSize * 0.53,
+                    child: Column(children: <Widget>[
+                      IconContainer(
+                        size: responsive.wp(10),
+                      ),
+                      SizedBox(height: responsive.dp(5)),
+                      Text(
+                        "Simplifica tus pagos, maximiza tus ventas",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: responsive.dp(1.5),
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.normal,
+                            letterSpacing: 1.5,
+                            wordSpacing: 2.0,
+                            height: 1.5),
+                        textAlign: TextAlign.center,
+                      ),
+                    ]),
+                  ),
+                  LoginForm()
+                ],
+              )
+        
+              /*  Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [_loginForm(context)],
+            ), */
+              ),
+        ),
       ),
     );
   }
 
-  Widget _loginForm(BuildContext context) {
+ /*  Widget _loginForm(BuildContext context) {
     return Column(
       children: [
         TextFormField(
@@ -154,8 +153,9 @@ class _LoginScreenState extends State<LoginScreen> {
       /* print('Token: $token'); */
       setState(() {
         _token = token;
+        print('Token: $_token');
       });
       return token;
     }
-  }
+  } */
 }
