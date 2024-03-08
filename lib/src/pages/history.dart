@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:pagoplux_flutter/src/model/response_model.dart';
+import 'package:pagoplux_flutter/src/pages/history_detail.dart';
 import 'package:pagoplux_flutter/src/utils/colors.dart';
 import 'package:pagoplux_flutter/src/utils/responsive.dart';
 
@@ -16,8 +16,8 @@ class HistoryScreen extends StatefulWidget {
 class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
-    final String _token = ModalRoute.of(context)!.settings.arguments as String;
-    final Responsive responsive = Responsive.of(context);
+  
+   
     return Scaffold(
       appBar: AppBar(
         title: Text('Actividad de transacciones'),
@@ -107,63 +107,19 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                       ),
                                     ],
                                   ),
-                                  
                                 ],
                               ),
                             ),
 
                             onTap: () {
+                              final transaction = transactions[index];
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Scaffold(
-                                          appBar: AppBar(
-                                            title: Text(
-                                                'voucher: ${transaction['voucher']}'),
-                                          ),
-                                          body: Column(
-                                            children: [
-                                              Text(
-                                                  'fecha_transaccion: ${transaction['fecha_transaccion']}'),
-                                              Text(
-                                                  'descripcion: ${transaction['descripcion']}'),
-                                              Text(
-                                                  'monto:${transaction['monto']}'),
-                                              Text(
-                                                  'numero_identificacion_cliente: ${transaction['numero_identificacion_cliente']}'),
-                                              Text(
-                                                  'numero_telefonico_cliente: ${transaction['numero_telefonico_cliente']}'),
-                                              Text(
-                                                  'estado_transaccion:${transaction['estado_transaccion']}'),
-                                              Text(
-                                                  'tipo_pago: ${transaction['tipo_pago']}'),
-                                              Text(
-                                                  'usuarioCreador: ${transaction['usuarioCreador']}'),
-                                              Text(
-                                                  'marcaTarjeta:${transaction['marcaTarjeta']}'),
-                                              Text(
-                                                  'bancoAdquiriente: ${transaction['bancoAdquiriente']}'),
-                                              Text(
-                                                  'voucher: ${transaction['voucher']}'),
-                                              Text(
-                                                  'cuotas:${transaction['cuotas']}'),
-                                              Text(
-                                                  'numMesesGracia: ${transaction['numMesesGracia']}'),
-                                              Text(
-                                                  'tieneInteres: ${transaction['tieneInteres']}'),
-                                              Text(
-                                                  'valorInteres:${transaction['valorInteres']}'),
-                                              Text(
-                                                  'numReferencia: ${transaction['numReferencia']}'),
-                                              Text(
-                                                  'numLote:${transaction['numLote']}'),
-                                              Text(
-                                                  'numAutorizacion: ${transaction['numAutorizacion']}'),
-                                              Text(
-                                                  'resEstado: ${transaction['resEstado']}'),
-                                            ],
-                                          ),
-                                        )),
+                                  builder: (context) => HistoryDetail(
+                                      transaction: transaction,
+                                      key: Key('history_detail')),
+                                ),
                               );
                             },
                             // Agrega aquí más detalles que desees mostrar
@@ -176,7 +132,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
               ),
             ],
           ),
-          
         ),
       ),
     );
