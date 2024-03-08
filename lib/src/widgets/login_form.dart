@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:pagoplux_flutter/src/utils/globals.dart';
+import 'package:pagoplux_flutter/src/utils/responsive.dart';
 import 'package:pagoplux_flutter/src/widgets/input_text.dart';
 
 class LoginForm extends StatefulWidget {
@@ -18,7 +18,6 @@ class _LoginFormState extends State<LoginForm> {
 
     return Positioned(
       bottom: 80,
-      
       child: Container(
         constraints: const BoxConstraints(maxWidth: 360, minWidth: 300),
         child: Column(
@@ -43,7 +42,9 @@ class _LoginFormState extends State<LoginForm> {
                     borderRadius: BorderRadius.circular(5),
                   ),
                   textStyle: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold, fontSize: responsive.dp(1.5)),
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: responsive.dp(1.5)),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 ),
@@ -58,7 +59,8 @@ class _LoginFormState extends State<LoginForm> {
                     print('Token: $_token');
                   }
                 },
-                child: const Text('Iniciar Sesión'),
+                child: const Text('Iniciar Sesión',
+                    style: TextStyle(color: Colors.white)),
               ),
             ),
             SizedBox(height: responsive.dp(3)),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pagoplux_flutter/src/routes/routes.dart' as routes;
+import 'package:pagoplux_flutter/src/utils/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -21,9 +21,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        
         useMaterial3: false,
-        
+        primarySwatch: primarySwatchColor(),
       ),
       initialRoute: '/',
       routes: routes.getApplicationRoutes(),

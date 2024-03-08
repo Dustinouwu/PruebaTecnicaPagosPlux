@@ -10,8 +10,8 @@ class IconContainer extends StatelessWidget {
     return Container(
       width: 300,
       height: 100,
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(13, 94, 207, 1),
+      /* decoration: BoxDecoration(
+        color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         boxShadow: const [
           BoxShadow(
@@ -20,7 +20,7 @@ class IconContainer extends StatelessWidget {
             offset: Offset(0, 9),
           ),
         ],
-      ),
+      ), */
       padding: EdgeInsets.all(20),
       child: Center(
         child: SvgPicture.asset(

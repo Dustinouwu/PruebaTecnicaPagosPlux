@@ -69,6 +69,7 @@ class ModalPagoPluxView extends StatelessWidget {
                           jsonDecode(message.message);
                       PagoResponseModel responseModel =
                           PagoResponseModel.fromMap(response);
+                          print(responseModel);
                       this.onClose(responseModel);
                       Navigator.of(context).pop();
                     },

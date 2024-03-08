@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pagoplux_flutter/src/ui/circle.dart';
 import 'package:pagoplux_flutter/src/ui/icon_container.dart';
-import 'package:pagoplux_flutter/src/utils/globals.dart';
+import 'package:pagoplux_flutter/src/utils/colors.dart';
+import 'package:pagoplux_flutter/src/utils/responsive.dart';
 import 'package:pagoplux_flutter/src/widgets/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -36,9 +37,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     right: -primaryColorSize * 0.2,
                     child: Circle(
                       size: size.width * 0.8,
-                      colors: const [
-                        Color.fromRGBO(255, 189, 73, 1),
-                        Color.fromRGBO(248, 175, 50, 1),
+                      colors: [
+                        Color.fromRGBO(252, 159, 0, 1),
+                        secondaryColor,
                         /* Color.fromRGBO(54, 213, 161, 1), */
                       ],
                     ),
@@ -48,9 +49,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     left: -secondaryColorSize * 0.15,
                     child: Circle(
                       size: size.width * 0.57,
-                      colors: const [
-                        Color.fromRGBO(54, 213, 161, 1),
-                        Color.fromRGBO(95, 233, 187, 1),
+                      colors: [
+                        Color.fromRGBO(0, 255, 170, 1),
+                        terciaryColor,
                       ],
                     ),
                   ),

@@ -4,6 +4,8 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:pagoplux_flutter/src/component/paybox.dart';
 import 'package:pagoplux_flutter/src/model/pagoplux_model.dart';
 import 'package:pagoplux_flutter/src/model/response_model.dart';
+import 'package:pagoplux_flutter/src/utils/responsive.dart';
+import 'package:pagoplux_flutter/src/widgets/pay_form.dart';
 
 /*
  * Clase demo para uso de botón de pagos flutter
@@ -28,9 +30,10 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
   final identificationController = TextEditingController();
 
   // Se construiye el view<
+  @override
   Widget build(BuildContext context) {
     final String _token = ModalRoute.of(context)!.settings.arguments as String;
-    openPpx();
+    final Responsive responsive = Responsive.of(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Plugin Flutter PPX'),
@@ -43,17 +46,42 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
           )
         ],
       ),
-      body: Container(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 4),
-          margin: const EdgeInsets.all(20),
-          child: _payForm(context)),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(
+                  left: responsive.dp(2),
+                ),
+                child: Row(
+                  mainAxisAlignment:
+                      MainAxisAlignment.start, // Align content to left
+                  children: <Widget>[
+                    Text(
+                      'Formulario de Pago',
+                      style: TextStyle(
+                        fontSize: responsive.dp(2.5),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    // Add more widgets to the Row if needed (optional)
+                  ],
+                ),
+              ),
+              SizedBox(height: responsive.dp(5)), // Add spacing
+              PayForm(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
   /*
    * Se encarga de iniciar los datos para el proceso de pago
    */
-  openPpx() {
+  /*  openPpx() {
     print('Se habre el botón de pagos');
     this._paymentModelExample = PagoPluxModel();
     this._paymentModelExample?.payboxRemail = 'da.nielrolesppx@gmail.com';
@@ -72,9 +100,7 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
     this._paymentModelExample?.payboxEnvironment = 'sandbox';
   }
 
-  Widget crearTop(BuildContext context) {
-    return Container(height: 0);
-  }
+ 
 
   obtenerDatos(PagoResponseModel datos) {
     voucher = 'Voucher: ${datos.detail.token}';
@@ -208,5 +234,5 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
         ],
       ),
     );
-  }
+  } */
 }

@@ -115,7 +115,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     final Map<String, dynamic> requestBody = {
       "numeroIdentificacion": "0992664673001",
       "initialDate": "2023-04-06",
-      "finalDate": "2024-03-07",
+      "finalDate": "2024-03-08",
       "tipoPago": "unico",
       "estado": "pagado",
       "identificacionCliente": "0992664673001"
