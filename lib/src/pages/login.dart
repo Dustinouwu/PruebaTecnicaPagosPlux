@@ -5,15 +5,13 @@ import 'package:pagoplux_flutter/src/utils/globals.dart';
 import 'package:pagoplux_flutter/src/widgets/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String? _token;
-
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
@@ -34,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 alignment: Alignment.center,
                 children: <Widget>[
                   Positioned(
-                    top: -primaryColorSize * 0.5,
+                    top: -primaryColorSize * 0.55,
                     right: -primaryColorSize * 0.2,
                     child: Circle(
                       size: size.width * 0.8,
@@ -57,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   Positioned(
-                    top: primaryColorSize * 0.53,
+                    top: primaryColorSize * 0.48,
                     child: Column(children: <Widget>[
                       IconContainer(
                         size: responsive.wp(10),
@@ -75,12 +73,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: 1.5),
                         textAlign: TextAlign.center,
                       ),
+                      
                     ]),
                   ),
+                  
                   LoginForm()
                 ],
               )
-        
+
               /*  Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [_loginForm(context)],
@@ -90,72 +90,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
- /*  Widget _loginForm(BuildContext context) {
-    return Column(
-      children: [
-        TextFormField(
-          initialValue: 'PagoPlux',
-          readOnly: true,
-          decoration: const InputDecoration(
-            labelText: 'Usuario',
-          ),
-        ),
-        TextFormField(
-          initialValue: 'PagoPlux',
-          readOnly: true,
-          decoration: const InputDecoration(
-            labelText: 'Password',
-          ),
-        ),
-        const SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () async {
-            await fetchData();
-            if (_token != null) {
-              Navigator.pushNamed(
-                context,
-                'demoppx',
-                arguments: _token,
-              );
-              print('Token: $_token');
-            }
-          },
-          child: const Text('Login'),
-        ),
-      ],
-    );
-  }
-
-  Future<dynamic> fetchData() async {
-    const String username = 'o3NXHGmfujN3Tyzp1cyCDu3xst';
-    const String password = 'TkBhZQP3zwMyx3JwC5HeFqzXM4p0jzsXp0hTbWRnI4riUtJT';
-    final String basicAuth =
-        'Basic ${base64Encode(utf8.encode('$username:$password'))}';
-
-    final Uri url = Uri.parse('https://apipre.pagoplux.com/intv1');
-    final Map<String, String> headers = {'Authorization': basicAuth};
-
-    final response = await http.post(
-      url,
-      headers: headers,
-    );
-
-    if (response.statusCode == 200) {
-      print('Autenticación exitosa');
-      return jsonDecode(response.body);
-    } else {
-      print('Error en la autenticación: ${response.statusCode}');
-      final errorMessage = response.body;
-      /* print('Error: $errorMessage'); */
-      final tokenMatch = RegExp(r"'([^']*)'").firstMatch(errorMessage);
-      final token = tokenMatch?.group(1);
-      /* print('Token: $token'); */
-      setState(() {
-        _token = token;
-        print('Token: $_token');
-      });
-      return token;
-    }
-  } */
 }

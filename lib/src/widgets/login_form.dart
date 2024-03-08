@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:pagoplux_flutter/src/utils/globals.dart';
 import 'package:pagoplux_flutter/src/widgets/input_text.dart';
 
 class LoginForm extends StatefulWidget {
-  
   const LoginForm({Key? key}) : super(key: key);
   @override
   State<LoginForm> createState() => _LoginFormState();
@@ -14,20 +14,28 @@ class _LoginFormState extends State<LoginForm> {
   String? _token;
   @override
   Widget build(BuildContext context) {
+    final Responsive responsive = Responsive.of(context);
+
     return Positioned(
-      bottom: 30,
-      left: 0,
-      right: 0,
+      bottom: 80,
+      
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20),
+        constraints: const BoxConstraints(maxWidth: 360, minWidth: 300),
         child: Column(
           children: <Widget>[
-            InputText(label: 'Usuario', keyboardType: TextInputType.text),
+            InputText(
+                label: 'Usuario',
+                keyboardType: TextInputType.text,
+                fontSize: responsive.dp(1.5)),
             InputText(
                 label: 'Contraseña',
-                keyboardType: TextInputType.visiblePassword),
+                keyboardType: TextInputType.visiblePassword,
+                fontSize: responsive.dp(1.5)),
+            SizedBox(height: responsive.dp(5)),
+            //Boton Login
             SizedBox(
               width: double.infinity,
+              height: 50,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(255, 189, 73, 1),
@@ -35,7 +43,7 @@ class _LoginFormState extends State<LoginForm> {
                     borderRadius: BorderRadius.circular(5),
                   ),
                   textStyle: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                      color: Colors.white, fontWeight: FontWeight.bold, fontSize: responsive.dp(1.5)),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 ),
@@ -50,9 +58,30 @@ class _LoginFormState extends State<LoginForm> {
                     print('Token: $_token');
                   }
                 },
-                child: const Text('Login'),
+                child: const Text('Iniciar Sesión'),
               ),
             ),
+            SizedBox(height: responsive.dp(3)),
+            //Boton Olvidaste tu contraseña
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  '¿Olvidaste tu contraseña?',
+                  style: TextStyle(fontSize: responsive.dp(1.6)),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text('Recuperar',
+                      style: TextStyle(fontSize: responsive.dp(1.6))),
+                  style: TextButton.styleFrom(
+                      primary: Color.fromARGB(255, 196, 144, 55)),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: responsive.dp(10),
+            )
           ],
         ),
       ),
