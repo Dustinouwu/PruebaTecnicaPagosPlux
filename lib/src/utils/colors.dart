@@ -7,7 +7,7 @@ Color secondaryColor = const Color.fromRGBO(255, 189, 73, 1);
 Color terciaryColor = const Color.fromRGBO(54, 213, 161, 1);
 
 MaterialColor primarySwatchColor() {
-  return createMaterialColor(const Color.fromRGBO(255, 189, 73, 1));
+  return createMaterialColor(Color.fromARGB(255, 255, 255, 255));
 }
 
 MaterialColor createMaterialColor(Color color) {
