@@ -122,8 +122,16 @@ class _PayFormState extends State<PayForm> {
             SizedBox(
                 width: double.infinity,
                 height: 50,
-                child: FloatingActionButton(
-                  child: const Icon(Icons.payments_rounded),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(255, 189, 73, 1),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 15),
+                  ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       openPpx();
@@ -139,6 +147,15 @@ class _PayFormState extends State<PayForm> {
                       );
                     }
                   },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.payments_rounded, color: Colors.white),
+                      const SizedBox(width: 20),
+                      Text('Realizar Pago',
+                          style: TextStyle(fontSize: responsive.dp(1.9), color: Colors.white)),
+                    ],
+                  ),
                 )),
             SizedBox(height: responsive.dp(3)),
           ],
@@ -147,6 +164,24 @@ class _PayFormState extends State<PayForm> {
     );
   }
 
+/* FloatingActionButton(
+                child: const Icon(Icons.payments_rounded),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    openPpx();
+                    showMaterialModalBottomSheet(
+                      context: context,
+                      useRootNavigator: true,
+                      elevation: 5,
+                      expand: true,
+                      builder: (context) => ModalPagoPluxView(
+                        pagoPluxModel: _paymentModelExample!,
+                        onClose: obtenerDatos,
+                      ),
+                    );
+                  }
+                },
+              ), */
   /*
    * Se encarga de iniciar los datos para el proceso de pago
    */

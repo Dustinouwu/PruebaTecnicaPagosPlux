@@ -12,6 +12,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   String? _token;
+  bool isButtonPressed = false;
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
@@ -44,19 +45,26 @@ class _LoginFormState extends State<LoginForm> {
                   textStyle: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: responsive.dp(1.5)),
+                      fontSize: responsive.dp(1.9)),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 ),
                 onPressed: () async {
-                  await fetchData();
-                  if (_token != null) {
-                    Navigator.pushNamed(
-                      context,
-                      'demoppx',
-                      arguments: _token,
-                    );
-                    print('Token: $_token');
+                  if (!isButtonPressed) {
+                    setState(() {
+                      isButtonPressed = true;
+                    });
+                    await fetchData();
+                    if (_token != null) {
+                      Navigator.pushNamed(
+                        context,
+                        'demoppx',
+                        arguments: _token,
+                      );
+                    }
+                    setState(() {
+                      isButtonPressed = false;
+                    });
                   }
                 },
                 child: const Text('Iniciar Sesión',
