@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       IconContainer(
                         size: responsive.wp(10),
                       ),
-                      SizedBox(height: responsive.dp(5)),
+                      
                       Text(
                         "Simplifica tus pagos, maximiza tus ventas",
                         style: TextStyle(

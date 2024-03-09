@@ -31,6 +31,7 @@ dependencies:
   cupertino_icons: ^1.0.0
   flutter:
     sdk: flutter
+  flutter_date_range_picker: ^0.0.14
   flutter_svg: ^2.0.10+1
   flutter_webview_plugin: ^0.4.0
   http: ^1.1.0

@@ -27,7 +27,7 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
         foregroundColor: Colors.black,
         title: SvgPicture.asset(
           'assets/logo-pagoplux-02.svg',
-          width: responsive.wp(40),
+          width: responsive.wp(30),
         ),
         actions: [
           IconButton(
