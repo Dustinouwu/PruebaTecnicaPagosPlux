@@ -2,8 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:PagoPlux/src/pages/history_detail.dart';
-import 'package:PagoPlux/src/utils/colors.dart';
-import 'package:PagoPlux/src/utils/responsive.dart';
+import 'package:PagoPlux/src/utils/globals.dart';
 
 class HistoryScreen extends StatefulWidget {
   HistoryScreen({super.key});
@@ -20,7 +19,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
    
     return Scaffold(
       appBar: AppBar(
-        title: Text('Actividad de transacciones'),
+        backgroundColor: appBarColor,
+        actionsIconTheme: IconThemeData(color: primaryColor),
+        foregroundColor: Colors.black,
+        title: Text('Actividad de transacciones', style: TextStyle(color: Colors.black))
       ),
       body: Center(
         child: SingleChildScrollView(

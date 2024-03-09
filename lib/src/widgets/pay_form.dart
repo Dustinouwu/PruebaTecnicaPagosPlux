@@ -5,6 +5,7 @@ import 'package:PagoPlux/src/utils/responsive.dart';
 import 'package:PagoPlux/src/widgets/input_text_pay.dart';
 import 'package:PagoPlux/src/model/pagoplux_model.dart';
 import 'package:PagoPlux/src/model/response_model.dart';
+import 'package:PagoPlux/src/utils/globals.dart';
 
 class PayForm extends StatefulWidget {
   const PayForm({Key? key}) : super(key: key);
@@ -124,7 +125,7 @@ class _PayFormState extends State<PayForm> {
                 height: 50,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromRGBO(255, 189, 73, 1),
+                    backgroundColor: secondaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),

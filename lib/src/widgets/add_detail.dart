@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:PagoPlux/src/utils/globals.dart';
 
 class TransactionAdditionalDetails extends StatelessWidget {
   final Map<String, dynamic> transaction;
@@ -40,10 +41,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
-            const Divider(
-              color: Colors.grey,
-              height: 2,
-            ),
+            divider(),
             SizedBox(height: 10),
             Row(
               children: [
@@ -53,10 +51,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
-            const Divider(
-              color: Colors.grey,
-              height: 2,
-            ),
+            divider(),
             SizedBox(height: 10),
             Row(
               children: [
@@ -66,10 +61,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
-            const Divider(
-              color: Colors.grey,
-              height: 2,
-            ),
+            divider(),
             SizedBox(height: 10),
             Row(
               children: [
@@ -80,10 +72,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
             ),
             // DESDE AQUÍ
             SizedBox(height: 10),
-            const Divider(
-              color: Colors.grey,
-              height: 2,
-            ),
+            divider(),
             SizedBox(height: 10),
             Row(
               children: [
@@ -94,10 +83,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
             ),
             // HASTA AQUÍ
              SizedBox(height: 10),
-            const Divider(
-              color: Colors.grey,
-              height: 2,
-            ),
+            divider(),
             SizedBox(height: 10),
             Row(
               children: [
@@ -107,10 +93,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
-            const Divider(
-              color: Colors.grey,
-              height: 2,
-            ),
+            divider(),
             SizedBox(height: 10),
             Row(
               children: [
@@ -120,10 +103,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
-            const Divider(
-              color: Colors.grey,
-              height: 2,
-            ),
+            divider(),
             SizedBox(height: 10),
             Row(
               children: [
@@ -133,10 +113,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
-            const Divider(
-              color: Colors.grey,
-              height: 2,
-            ),
+            divider(),
             SizedBox(height: 10),
             Row(
               children: [
@@ -146,10 +123,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
-            const Divider(
-              color: Colors.grey,
-              height: 2,
-            ),
+            divider(),
             SizedBox(height: 10),
             Row(
               children: [

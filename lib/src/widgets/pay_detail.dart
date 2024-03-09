@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:PagoPlux/src/utils/globals.dart';
 
 class TransactionPaymentDetails extends StatelessWidget {
   final Map<String, dynamic> transaction;
@@ -40,10 +41,7 @@ class TransactionPaymentDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
-            const Divider(
-              color: Colors.grey,
-              height: 2,
-            ),
+            divider(),
             SizedBox(height: 10),
             Row(
               children: [
@@ -53,10 +51,7 @@ class TransactionPaymentDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
-            const Divider(
-              color: Colors.grey,
-              height: 2,
-            ),
+            divider(),
             SizedBox(height: 10),
             Row(
               children: [
@@ -66,10 +61,7 @@ class TransactionPaymentDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
-            const Divider(
-              color: Colors.grey,
-              height: 2,
-            ),
+            divider(),
             SizedBox(height: 10),
             Row(
               children: [

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:PagoPlux/src/model/pagoplux_model.dart';
 import 'package:PagoPlux/src/utils/responsive.dart';
 import 'package:PagoPlux/src/widgets/pay_form.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:PagoPlux/src/utils/globals.dart';
 
 /*
  * Clase demo para uso de botón de pagos flutter
@@ -16,17 +15,6 @@ class PayboxDemoPage extends StatefulWidget {
 }
 
 class _PayboxDemoPageState extends State<PayboxDemoPage> {
-  final _formKey = GlobalKey<FormState>();
-  PagoPluxModel? _paymentModelExample;
-  String voucher = 'Pendiente Pago';
-  // Controladores de los campos de texto|
-  final namesController = TextEditingController();
-  final telephoneController = TextEditingController();
-  final addressController = TextEditingController();
-  final emailController = TextEditingController();
-  final valueController = TextEditingController();
-  final identificationController = TextEditingController();
-
   // Se construiye el view<
   @override
   Widget build(BuildContext context) {
@@ -34,6 +22,9 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
     final Responsive responsive = Responsive.of(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: appBarColor,
+        actionsIconTheme: IconThemeData(color: Colors.black),
+        foregroundColor: Colors.black,
         title: SvgPicture.asset(
           'assets/logo-pagoplux-02.svg',
           width: responsive.wp(40),

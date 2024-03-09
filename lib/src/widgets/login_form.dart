@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:PagoPlux/src/utils/responsive.dart';
 import 'package:PagoPlux/src/widgets/input_text.dart';
+import 'package:PagoPlux/src/utils/globals.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class _LoginFormState extends State<LoginForm> {
               height: 50,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromRGBO(255, 189, 73, 1),
+                  backgroundColor: secondaryColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5),
                   ),
@@ -85,7 +86,7 @@ class _LoginFormState extends State<LoginForm> {
                   child: Text('Recuperar',
                       style: TextStyle(fontSize: responsive.dp(1.6))),
                   style: TextButton.styleFrom(
-                      primary: Color.fromARGB(255, 196, 144, 55)),
+                      primary: secondaryColor,),
                 ),
               ],
             ),

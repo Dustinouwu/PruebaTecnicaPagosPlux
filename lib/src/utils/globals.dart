@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
+// Colores de la aplicación
+
 Color primaryColor = const Color.fromRGBO(13, 94, 207, 1);
 
 Color secondaryColor = const Color.fromRGBO(255, 189, 73, 1);
 
 Color terciaryColor = const Color.fromRGBO(54, 213, 161, 1);
 
+Color appBarColor = Color.fromARGB(255, 255, 255, 255);
+
 MaterialColor primarySwatchColor() {
-  return createMaterialColor(Color.fromARGB(255, 255, 255, 255));
+  return createMaterialColor(primaryColor);
 }
 
 MaterialColor createMaterialColor(Color color) {
@@ -28,4 +32,13 @@ MaterialColor createMaterialColor(Color color) {
     );
   }
   return MaterialColor(color.value, swatch);
+}
+
+// Separador de los campos de texto
+
+Divider divider() {
+  return const Divider(
+    color: Colors.grey,
+    height: 2,
+  );
 }

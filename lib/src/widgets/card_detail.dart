@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:PagoPlux/src/utils/globals.dart';
 
 class TransactionBasicInfo extends StatelessWidget {
   final Map<String, dynamic> transaction;
@@ -27,18 +28,12 @@ class TransactionBasicInfo extends StatelessWidget {
           children: [
             Text('\$${transaction['monto']}',
                 style: const TextStyle(fontSize: 30)),
-            const Divider(
-              color: Colors.grey,
-              height: 2,
-            ),
+            divider(),
             Text('${transaction['fecha_transaccion']}'),
             SizedBox(height: 20),
             Text('Estado: ${transaction['estado_transaccion']}'),
             SizedBox(height: 15),
-            const Divider(
-              color: Colors.grey,
-              height: 2,
-            ),
+            divider(),
             SizedBox(height: 15),
             Row(
               children: [
