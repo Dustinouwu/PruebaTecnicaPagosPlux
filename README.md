@@ -1,4 +1,4 @@
-# pagoplux_flutter
+# PagoPlux
 
 A new Flutter project.
 

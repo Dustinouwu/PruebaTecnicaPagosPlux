@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pagoplux_flutter/src/routes/routes.dart' as routes;
-import 'package:pagoplux_flutter/src/utils/colors.dart';
+import 'package:PagoPlux/src/routes/routes.dart' as routes;
+import 'package:PagoPlux/src/utils/colors.dart';
 
 void main() {
   runApp(const MyApp());

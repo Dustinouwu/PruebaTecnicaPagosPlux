@@ -11,9 +11,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-import 'package:pagoplux_flutter/src/model/environment_model.dart';
-import 'package:pagoplux_flutter/src/model/pagoplux_model.dart';
-import 'package:pagoplux_flutter/src/model/response_model.dart';
+import 'package:PagoPlux/src/model/environment_model.dart';
+import 'package:PagoPlux/src/model/pagoplux_model.dart';
+import 'package:PagoPlux/src/model/response_model.dart';
 
 /*
  * Componente View que presenta el modal con al webView de PagoPlux

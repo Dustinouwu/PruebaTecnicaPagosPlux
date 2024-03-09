@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pagoplux_flutter/src/widgets/add_detail.dart';
-import 'package:pagoplux_flutter/src/widgets/card_detail.dart';
-import 'package:pagoplux_flutter/src/widgets/pay_detail.dart';
+import 'package:PagoPlux/src/widgets/add_detail.dart';
+import 'package:PagoPlux/src/widgets/card_detail.dart';
+import 'package:PagoPlux/src/widgets/pay_detail.dart';
 
 class HistoryDetail extends StatelessWidget {
   final dynamic transaction;

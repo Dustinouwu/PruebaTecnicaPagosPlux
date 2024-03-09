@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:pagoplux_flutter/src/component/paybox.dart';
-import 'package:pagoplux_flutter/src/model/pagoplux_model.dart';
-import 'package:pagoplux_flutter/src/model/response_model.dart';
-import 'package:pagoplux_flutter/src/utils/responsive.dart';
-import 'package:pagoplux_flutter/src/widgets/pay_form.dart';
+import 'package:PagoPlux/src/model/pagoplux_model.dart';
+import 'package:PagoPlux/src/utils/responsive.dart';
+import 'package:PagoPlux/src/widgets/pay_form.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 /*
  * Clase demo para uso de botón de pagos flutter
@@ -36,7 +34,10 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
     final Responsive responsive = Responsive.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Plugin Flutter PPX'),
+        title: SvgPicture.asset(
+          'assets/logo-pagoplux-02.svg',
+          width: responsive.wp(40),
+        ),
         actions: [
           IconButton(
             onPressed: () {

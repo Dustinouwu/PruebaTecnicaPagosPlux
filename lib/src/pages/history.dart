@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:pagoplux_flutter/src/pages/history_detail.dart';
-import 'package:pagoplux_flutter/src/utils/colors.dart';
-import 'package:pagoplux_flutter/src/utils/responsive.dart';
+import 'package:PagoPlux/src/pages/history_detail.dart';
+import 'package:PagoPlux/src/utils/colors.dart';
+import 'package:PagoPlux/src/utils/responsive.dart';
 
 class HistoryScreen extends StatefulWidget {
   HistoryScreen({super.key});

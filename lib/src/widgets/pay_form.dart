@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:pagoplux_flutter/src/component/paybox.dart';
-import 'package:pagoplux_flutter/src/utils/responsive.dart';
-import 'package:pagoplux_flutter/src/widgets/input_text_pay.dart';
-import 'package:pagoplux_flutter/src/model/pagoplux_model.dart';
-import 'package:pagoplux_flutter/src/model/response_model.dart';
+import 'package:PagoPlux/src/component/paybox.dart';
+import 'package:PagoPlux/src/utils/responsive.dart';
+import 'package:PagoPlux/src/widgets/input_text_pay.dart';
+import 'package:PagoPlux/src/model/pagoplux_model.dart';
+import 'package:PagoPlux/src/model/response_model.dart';
 
 class PayForm extends StatefulWidget {
   const PayForm({Key? key}) : super(key: key);

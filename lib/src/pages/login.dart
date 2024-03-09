@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pagoplux_flutter/src/ui/circle.dart';
-import 'package:pagoplux_flutter/src/ui/icon_container.dart';
-import 'package:pagoplux_flutter/src/utils/colors.dart';
-import 'package:pagoplux_flutter/src/utils/responsive.dart';
-import 'package:pagoplux_flutter/src/widgets/login_form.dart';
+import 'package:PagoPlux/src/ui/circle.dart';
+import 'package:PagoPlux/src/ui/icon_container.dart';
+import 'package:PagoPlux/src/utils/colors.dart';
+import 'package:PagoPlux/src/utils/responsive.dart';
+import 'package:PagoPlux/src/widgets/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:pagoplux_flutter/src/utils/responsive.dart';
-import 'package:pagoplux_flutter/src/widgets/input_text.dart';
+import 'package:PagoPlux/src/utils/responsive.dart';
+import 'package:PagoPlux/src/widgets/input_text.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);

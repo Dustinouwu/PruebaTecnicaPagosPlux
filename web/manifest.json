@@ -1,6 +1,6 @@
 {
-    "name": "pagoplux_flutter",
-    "short_name": "pagoplux_flutter",
+    "name": "PagoPlux",
+    "short_name": "PagoPlux",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
