@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:PagoPlux/src/ui/circle.dart';
-import 'package:PagoPlux/src/ui/icon_container.dart';
+import 'package:PagoPlux/src/widgets/circle.dart';
+import 'package:PagoPlux/src/widgets/icon_container.dart';
 import 'package:PagoPlux/src/utils/globals.dart';
 import 'package:PagoPlux/src/utils/responsive.dart';
 import 'package:PagoPlux/src/widgets/login_form.dart';
