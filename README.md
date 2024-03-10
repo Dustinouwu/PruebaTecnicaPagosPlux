@@ -1,71 +1,45 @@
 # Prueba Técnica de PagoPlux
 
-# Nombre de la Prueba Técnica
-
-Descripción breve de la prueba técnica y su propósito.
+Prueba técnica para PagoPlux, la aplicación de nombre PagoPlux permite a los usuarios realizar transacciones y además ver su historial y detalle de cada transacción. También, cuenta con una pantalla para iniciar sesión, pantalla de carga al iniciar el proyecto.
 
 ## Tabla de Contenidos
 
-1. [Instrucciones de Instalación](#instrucciones-de-instalación)
-2. [Estructura del Proyecto](#estructura-del-proyecto)
-3. [Tecnologías Utilizadas](#tecnologías-utilizadas)
-4. [Instrucciones de Ejecución](#instrucciones-de-ejecución)
-5. [Detalles de Implementación](#detalles-de-implementación)
-6. [Pruebas y Verificación](#pruebas-y-verificación)
-7. [Limitaciones Conocidas](#limitaciones-conocidas)
-8. [Contacto](#contacto)
+1. Instrucciones de Instalación y Ejecución
+2. Tecnologías Utilizadas
+3. Librerias Adicionales Agregadas
+4. Capturas de Pantalla
+5. Créditos
 
-## Instrucciones de Instalación
+
+## Instrucciones de Instalación y Ejecución
 
 1. Clonar el repositorio
 2. Ejecutar `flutter pub get` para instalar las dependencias del proyecto
-3. Construir el proyecto en cualquier dispositivo Android
-
-## Estructura del Proyecto
-
-Estructura agregada para la prueba técnica
-
-- **assets/**: Directorio que las imágenes utilizdas para el proyecto.
-
-- **lib/**: Directorio que contiene el código fuente del proyecto.
-    
-  - **src/**: Subdirectorio que contiene el código fuente del proyecto.
-
-    - **utils/**: Directorio que contiene utilidades y funciones auxiliares.
-
-        - **helper_functions.py**: Archivo que contiene funciones de ayuda para diversas tareas en el proyecto.
-
-        - **constants.py**: Archivo que define constantes utilizadas en el proyecto.
-
-  - **main.dart/**: Directorio que contiene pruebas unitarias para el proyecto.
-
-
-
-Esta estructura proporciona una organización clara del proyecto, separando el código fuente de las pruebas y las utilidades, lo que facilita la navegación y el mantenimiento del código.
-
+  ```sh
+  flutter pub get
+  ```
+3. Inicialice el proyecto en cualquier dispositivo Android
 
 ## Tecnologías Utilizadas
 
-- Tecnología 1
-- Tecnología 2
-- ...
+- Lenguaje: Dart `3.1.3`
+- Framework: Flutter `3.13.7`
 
-## Instrucciones de Ejecución
+## Librerias Adicionales Agregadas
 
-Pasos detallados sobre cómo ejecutar la prueba técnica, incluyendo cualquier comando o script necesario, así como opciones de configuración.
+- `flutter_svg`: Librería para manejar svg.
+- `http`: Librería para manejar peticiones http.
 
-## Detalles de Implementación
+## Capturas de Pantalla
 
-Explicaciones adicionales sobre decisiones de diseño, algoritmos utilizados, arquitectura del sistema, etc.
+Se cambió el formato para poder ver el historial creando un Drawer al deslizar en el filo de la pantalla hacia la derecha.
+<p align="center"><img src ="https://github.com/Dustinouwu/Flutter_Curso/blob/main/assets/Cap1.jpg" width="200"/></p>
 
-## Pruebas y Verificación
+Cada uno de los elementos de las actividades de transacciones al hacer un tap sobre ellos se abrirá otra pantalla mostrando el detalle de la transacción previamente seleccionada.
+<p align="center"><img src ="https://github.com/Dustinouwu/Flutter_Curso/blob/main/assets/cap2.jpg" width="200"/></p>
 
-Descripción de las pruebas realizadas en la prueba técnica, incluyendo casos de prueba, herramientas utilizadas para las pruebas, y resultados esperados.
+## Créditos
 
-## Limitaciones Conocidas
-
-Cualquier limitación o problema conocido que los revisores deberían tener en cuenta al revisar la prueba técnica.
-
-## Contacto
-
-Información de contacto del desarrollador o equipo responsable de la prueba técnica, en caso de que los revisores tengan preguntas o comentarios adicionales.
+- Desarrollador por [Dastin Chávez](https://github.com/Dustinouwu).
+- Correo: brago22@hotmail.it
+- Correo secundario: dastin.chavez@epn.edu.ec
