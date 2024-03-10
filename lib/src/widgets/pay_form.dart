@@ -108,6 +108,8 @@ class _PayFormState extends State<PayForm> {
                   return 'Por favor ingrese un valor numérico';
                 } else if (double.tryParse(value)! > 10000) {
                   return 'El valor a pagar no puede ser mayor a 10000';
+                } else if (double.tryParse(value)! <= 0) {
+                  return 'El valor a pagar no puede ser menor o igual a 0';
                 }
                 return null;
               },
@@ -115,14 +117,15 @@ class _PayFormState extends State<PayForm> {
 
             TextFormField(
               initialValue: '0992664673001',
-              
               keyboardType: TextInputType.number,
               readOnly: true,
               decoration: const InputDecoration(
                 labelText: 'Identificación',
                 hintText: '0992664673001',
               ),
-              style: TextStyle(fontSize: responsive.dp(1.5),),
+              style: TextStyle(
+                fontSize: responsive.dp(1.5),
+              ),
             ),
             SizedBox(height: responsive.dp(5)),
             //Boton Login
@@ -135,7 +138,6 @@ class _PayFormState extends State<PayForm> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30, vertical: 15),
                   ),
@@ -152,6 +154,7 @@ class _PayFormState extends State<PayForm> {
                           onClose: obtenerDatos,
                         ),
                       );
+                      clearInputFields();
                     }
                   },
                   child: Row(
@@ -211,10 +214,18 @@ class _PayFormState extends State<PayForm> {
     this._paymentModelExample?.payboxEnvironment = 'sandbox';
   }
 
+  void clearInputFields() {
+    namesController.clear();
+    telephoneController.clear();
+    addressController.clear();
+    emailController.clear();
+    valueController.clear();
+  }
+
   obtenerDatos(PagoResponseModel datos) {
     voucher = 'Voucher: ${datos.detail.token}';
     print(voucher);
-
+    clearInputFields();
     setState(() {});
     print('LLego ' + datos.detail.token);
   }

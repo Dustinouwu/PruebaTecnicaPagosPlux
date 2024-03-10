@@ -57,7 +57,7 @@ class _LoginFormState extends State<LoginForm> {
                     });
                     await fetchData();
                     if (_token != null) {
-                      Navigator.pushNamed(
+                      Navigator.pushReplacementNamed(
                         context,
                         'demoppx',
                         arguments: _token,

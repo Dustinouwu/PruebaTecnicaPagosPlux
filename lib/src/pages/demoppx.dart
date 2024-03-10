@@ -9,9 +9,9 @@ import 'package:PagoPlux/src/widgets/drawer.dart' as drawer;
  * Widget con estado
  */
 class PayboxDemoPage extends StatefulWidget {
-  final String? token;
+  String? token;
 
-  const PayboxDemoPage({Key? key, this.token}) : super(key: key);
+   PayboxDemoPage({Key? key}) : super(key: key);
 
   @override
   _PayboxDemoPageState createState() => _PayboxDemoPageState();
