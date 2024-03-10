@@ -140,7 +140,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   }
 
   Future<dynamic> fetchData() async {
-    String token = ModalRoute.of(context)!.settings.arguments as String;
+    final String token = ModalRoute.of(context)!.settings.arguments as String;
 
     final Uri url = Uri.parse(
         'https://apipre.pagoplux.com/intv1/integrations/getTransactionsEstablishmentResource');
