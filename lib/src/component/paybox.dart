@@ -18,83 +18,112 @@ import 'package:PagoPlux/src/model/response_model.dart';
 /*
  * Componente View que presenta el modal con al webView de PagoPlux
  */
-class ModalPagoPluxView extends StatelessWidget {
+class ModalPagoPluxView extends StatefulWidget {
   final PagoPluxModel pagoPluxModel;
   final Function onClose;
   final String? token;
 
-  ModalPagoPluxView({required this.pagoPluxModel, required this.onClose, required this.token});
-  
+  ModalPagoPluxView(
+      {required this.pagoPluxModel,
+      required this.onClose,
+      required this.token});
 
-  /*
-   * Se construye la vista 
-   */
+  @override
+  _ModalPagoPluxViewState createState() => _ModalPagoPluxViewState();
+}
+
+class _ModalPagoPluxViewState extends State<ModalPagoPluxView> {
+  bool _jsonReceived = false;
+
+  void updateJsonReceived(bool value) {
+    setState(() {
+      _jsonReceived = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    // String url = this.getUrl(this.pagoPluxModel);
-    String url = Uri.dataFromString(getHTML(this.pagoPluxModel),
+    String url = Uri.dataFromString(getHTML(widget.pagoPluxModel),
             mimeType: 'text/html', encoding: Encoding.getByName('UTF-8'))
         .toString();
 
-    Uri uri = Uri.dataFromString(getHTML(this.pagoPluxModel),
+    Uri uri = Uri.dataFromString(getHTML(widget.pagoPluxModel),
         mimeType: 'text/html', encoding: Encoding.getByName('UTF-8'));
     print(Uri.decodeFull(uri.toString()));
+
     return Material(
       child: Scaffold(
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(40.0),
-            child: AppBar(
-                automaticallyImplyLeading: false,
-                title: Text('PagoPlux', style: TextStyle(fontSize: 16)),
-                backgroundColor: Color.fromARGB(250, 22, 155, 213),
-                actions: <Widget>[
-                  IconButton(
-                      icon: Icon(Icons.close_sharp),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        Navigator.pushNamed(context, 'history', arguments: token);
-                      }),
-                ],
-                centerTitle: false)),
+          preferredSize: Size.fromHeight(40.0),
+          child: AppBar(
+            automaticallyImplyLeading: false,
+            title: Text('PagoPlux', style: TextStyle(fontSize: 16)),
+            backgroundColor: Color.fromARGB(250, 22, 155, 213),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.close_sharp),
+                onPressed: () {
+                  print('jsonReceived: $_jsonReceived');
+                  if (_jsonReceived == true) {
+                    Navigator.of(context).pop();
+                    Navigator.pushNamed(context, 'history', arguments: widget.token);
+                  } else {
+                    Navigator.of(context).pop();
+                  }
+                },
+              ),
+            ],
+            centerTitle: false,
+          ),
+        ),
         body: SafeArea(
-            bottom: false,
-            child: Container(
-              padding: EdgeInsets.all(8),
-              child: WebviewScaffold(
-                url: url,
-                javascriptChannels: Set.from([
-                  JavascriptChannel(
-                    name: 'Print',
-                    onMessageReceived: (JavascriptMessage message) {
-                      print(message.message);
-                      Map<String, dynamic> response =
-                          jsonDecode(message.message);
-                      PagoResponseModel responseModel =
-                          PagoResponseModel.fromMap(response);
-                          print(responseModel);
-                      this.onClose(responseModel);
-                      Navigator.of(context).pop();
-                    },
-                  )
-                ].toSet()),
-                mediaPlaybackRequiresUserGesture: false,
-                withZoom: false,
-                withLocalStorage: true,
-                hidden: false,
-                enableAppScheme: true,
-                allowFileURLs: true,
-                initialChild: Container(
-                  color: Colors.white10,
-                  child: const Center(
-                    child: Text('Cargando....',
-                        style: TextStyle(color: Colors.black)),
+          bottom: false,
+          child: Container(
+            padding: EdgeInsets.all(8),
+            child: WebviewScaffold(
+              url: url,
+              javascriptChannels: Set.from([
+                JavascriptChannel(
+                  name: 'Print',
+                  onMessageReceived: (JavascriptMessage message) {
+                    print(message.message);
+
+                    Map<String, dynamic> response =
+                        jsonDecode(message.message);
+                    if (response['status'] == 'succeeded') {
+                      updateJsonReceived(true);
+                    }
+                    PagoResponseModel responseModel =
+                        PagoResponseModel.fromMap(response);
+                    print(responseModel);
+                    widget.onClose(responseModel);
+                    Navigator.of(context).pop();
+                  },
+                )
+              ]),
+              mediaPlaybackRequiresUserGesture: false,
+              withZoom: false,
+              withLocalStorage: true,
+              hidden: false,
+              enableAppScheme: true,
+              allowFileURLs: true,
+              initialChild: Container(
+                color: Colors.white10,
+                child: const Center(
+                  child: Text(
+                    'Cargando....',
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
               ),
-            )),
+            ),
+          ),
+        ),
       ),
     );
   }
+
+
 
   /*
    * Se genera la URL para obtener la URL de pago
