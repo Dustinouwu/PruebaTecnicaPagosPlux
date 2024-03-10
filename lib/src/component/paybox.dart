@@ -33,11 +33,11 @@ class ModalPagoPluxView extends StatefulWidget {
 }
 
 class _ModalPagoPluxViewState extends State<ModalPagoPluxView> {
-  bool _jsonReceived = false;
+  bool _payVer = false;
 
   void updateJsonReceived(bool value) {
     setState(() {
-      _jsonReceived = value;
+      _payVer = value;
     });
   }
 
@@ -63,8 +63,8 @@ class _ModalPagoPluxViewState extends State<ModalPagoPluxView> {
               IconButton(
                 icon: Icon(Icons.close_sharp),
                 onPressed: () {
-                  print('jsonReceived: $_jsonReceived');
-                  if (_jsonReceived == true) {
+                  print('jsonReceived: $_payVer');
+                  if (_payVer == true) {
                     Navigator.of(context).pop();
                     Navigator.pushNamed(context, 'history', arguments: widget.token);
                   } else {
