@@ -19,9 +19,9 @@ class _LoginFormState extends State<LoginForm> {
     final Responsive responsive = Responsive.of(context);
 
     return Positioned(
-      bottom: 80,
+      bottom: 150,
       child: Container(
-        constraints: const BoxConstraints(maxWidth: 360, minWidth: 300),
+        constraints: const BoxConstraints(maxWidth: 370, minWidth: 300),
         child: Column(
           children: <Widget>[
             InputText(
@@ -46,7 +46,7 @@ class _LoginFormState extends State<LoginForm> {
                   textStyle: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: responsive.dp(1.5)),
+                      fontSize: 18),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 ),
@@ -79,12 +79,12 @@ class _LoginFormState extends State<LoginForm> {
               children: <Widget>[
                 Text(
                   '¿Olvidaste tu contraseña?',
-                  style: TextStyle(fontSize: responsive.dp(1.5)),
+                  style: TextStyle(fontSize: 15),
                 ),
                 TextButton(
                   onPressed: () {},
                   child: Text('Recuperar',
-                      style: TextStyle(fontSize: responsive.dp(1.5))),
+                      style: TextStyle(fontSize: 15)),
                   style: TextButton.styleFrom(
                       primary: secondaryColor,),
                 ),

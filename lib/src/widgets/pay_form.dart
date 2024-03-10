@@ -49,6 +49,7 @@ class _PayFormState extends State<PayForm> {
 
             InputText(
               controller: telephoneController,
+              fontSize: responsive.dp(1.5),
               keyboardType: TextInputType.phone,
               label: 'Teléfono',
               validator: (value) {
@@ -68,6 +69,7 @@ class _PayFormState extends State<PayForm> {
 
             InputText(
               controller: addressController,
+              fontSize: responsive.dp(1.5),
               keyboardType: TextInputType.text,
               label: 'Dirección',
               validator: (value) {
@@ -80,6 +82,7 @@ class _PayFormState extends State<PayForm> {
 
             InputText(
               controller: emailController,
+              fontSize: responsive.dp(1.5),
               keyboardType: TextInputType.emailAddress,
               label: 'Correo Electrónico',
               validator: (value) {
@@ -95,6 +98,7 @@ class _PayFormState extends State<PayForm> {
 
             InputText(
               controller: valueController,
+              fontSize: responsive.dp(1.5),
               keyboardType: TextInputType.numberWithOptions(decimal: true),
               label: 'Valor de pago',
               validator: (value) {
@@ -111,12 +115,14 @@ class _PayFormState extends State<PayForm> {
 
             TextFormField(
               initialValue: '0992664673001',
+              
               keyboardType: TextInputType.number,
               readOnly: true,
               decoration: const InputDecoration(
                 labelText: 'Identificación',
                 hintText: '0992664673001',
               ),
+              style: TextStyle(fontSize: responsive.dp(1.5),),
             ),
             SizedBox(height: responsive.dp(5)),
             //Boton Login
@@ -154,7 +160,7 @@ class _PayFormState extends State<PayForm> {
                       const Icon(Icons.payments_rounded, color: Colors.white),
                       const SizedBox(width: 20),
                       Text('Realizar Pago',
-                          style: TextStyle(fontSize: responsive.dp(1.9), color: Colors.white)),
+                          style: TextStyle(fontSize: 18, color: Colors.white)),
                     ],
                   ),
                 )),

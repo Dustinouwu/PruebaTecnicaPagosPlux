@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     ]);
 
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'PagoPlux',
       theme: ThemeData(
         useMaterial3: false,
         primarySwatch: primarySwatchColor(),

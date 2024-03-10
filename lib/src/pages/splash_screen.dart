@@ -2,8 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:PagoPlux/src/pages/login.dart';
 
-
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -26,23 +24,23 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _startTime() async {
     print('_startTime()');
-    var duration = new Duration( milliseconds: 2600);
+    var duration = new Duration(milliseconds: 2600);
     return new Timer(duration, _route);
   }
 
   _route() {
     print('_route()');
-    Navigator.push(
-        context,
-        PageRouteBuilder(
-            pageBuilder: (c, a1, a2) => const LoginScreen(),
-            transitionsBuilder: (c, anim, a2, child) => FadeTransition(
-                  opacity: anim,
-                  child: child,
-                ),
-            transitionDuration: const Duration(
-              milliseconds: 100,
-            )));
+    Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (c, a1, a2) => const LoginScreen(),
+        transitionsBuilder: (c, anim, a2, child) => FadeTransition(
+          opacity: anim,
+          child: child,
+        ),
+        transitionDuration: const Duration(milliseconds: 100),
+      ),
+    );
   }
 
   Widget _body(BuildContext context) {
@@ -70,7 +68,6 @@ class _SplashScreenState extends State<SplashScreen> {
             SizedBox(
               height: _appBarSize,
             ),
-          
           ],
         ),
       ),
