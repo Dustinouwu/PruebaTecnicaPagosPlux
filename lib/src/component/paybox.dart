@@ -35,7 +35,7 @@ class ModalPagoPluxView extends StatefulWidget {
 class _ModalPagoPluxViewState extends State<ModalPagoPluxView> {
   bool _payVer = false;
 
-  void updateJsonReceived(bool value) {
+  void updatePayVer(bool value) {
     setState(() {
       _payVer = value;
     });
@@ -63,7 +63,7 @@ class _ModalPagoPluxViewState extends State<ModalPagoPluxView> {
               IconButton(
                 icon: Icon(Icons.close_sharp),
                 onPressed: () {
-                  print('jsonReceived: $_payVer');
+                  print('_payVer: $_payVer');
                   if (_payVer == true) {
                     Navigator.of(context).pop();
                     Navigator.pushNamed(context, 'history', arguments: widget.token);
@@ -91,7 +91,7 @@ class _ModalPagoPluxViewState extends State<ModalPagoPluxView> {
                     Map<String, dynamic> response =
                         jsonDecode(message.message);
                     if (response['status'] == 'succeeded') {
-                      updateJsonReceived(true);
+                      updatePayVer(true);
                     }
                     PagoResponseModel responseModel =
                         PagoResponseModel.fromMap(response);
