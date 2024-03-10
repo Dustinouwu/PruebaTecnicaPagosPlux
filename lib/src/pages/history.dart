@@ -152,7 +152,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     final Map<String, dynamic> requestBody = {
       "numeroIdentificacion": "0992664673001",
       "initialDate": "2023-04-06",
-      "finalDate": "2024-03-08",
+      "finalDate": "2024-04-08",
       "tipoPago": "unico",
       "estado": "pagado",
       "identificacionCliente": "0992664673001"
@@ -165,7 +165,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     );
 
     if (response.statusCode == 200) {
-      print('Autenticación exitosa');
+      print('Consummo api exitoso');
       dynamic responseData = jsonDecode(response.body);
       print(responseData); // Imprime los datos recibidos en la consola
       return responseData;

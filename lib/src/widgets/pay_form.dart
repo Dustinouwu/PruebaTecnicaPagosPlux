@@ -8,14 +8,13 @@ import 'package:PagoPlux/src/model/response_model.dart';
 import 'package:PagoPlux/src/utils/globals.dart';
 
 class PayForm extends StatefulWidget {
-  const PayForm({Key? key}) : super(key: key);
+  final String? token;
+  const PayForm({Key? key, required this.token}) : super(key: key);
   @override
   State<PayForm> createState() => _PayFormState();
 }
 
 class _PayFormState extends State<PayForm> {
-  String? _token;
-
   final _formKey = GlobalKey<FormState>();
   PagoPluxModel? _paymentModelExample;
   String voucher = 'Pendiente Pago';
@@ -25,8 +24,10 @@ class _PayFormState extends State<PayForm> {
   final addressController = TextEditingController();
   final emailController = TextEditingController();
   final valueController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final String token = ModalRoute.of(context)!.settings.arguments as String;
     final Responsive responsive = Responsive.of(context);
     return Container(
       constraints: const BoxConstraints(maxWidth: 360, minWidth: 300),
@@ -150,6 +151,7 @@ class _PayFormState extends State<PayForm> {
                         elevation: 5,
                         expand: true,
                         builder: (context) => ModalPagoPluxView(
+                          token: token,
                           pagoPluxModel: _paymentModelExample!,
                           onClose: obtenerDatos,
                         ),
@@ -174,28 +176,13 @@ class _PayFormState extends State<PayForm> {
     );
   }
 
-/* FloatingActionButton(
-                child: const Icon(Icons.payments_rounded),
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    openPpx();
-                    showMaterialModalBottomSheet(
-                      context: context,
-                      useRootNavigator: true,
-                      elevation: 5,
-                      expand: true,
-                      builder: (context) => ModalPagoPluxView(
-                        pagoPluxModel: _paymentModelExample!,
-                        onClose: obtenerDatos,
-                      ),
-                    );
-                  }
-                },
-              ), */
   /*
    * Se encarga de iniciar los datos para el proceso de pago
    */
   openPpx() {
+    double valor = double.tryParse(valueController.text) ?? 0;
+    double aumento = valor * 0.12;
+    double valorFinal = valor + aumento;
     print('Se habre el botón de pagos');
     this._paymentModelExample = PagoPluxModel();
     this._paymentModelExample?.payboxRemail = 'da.nielrolesppx@gmail.com';
@@ -203,8 +190,7 @@ class _PayFormState extends State<PayForm> {
     this._paymentModelExample?.payboxRename = 'Negocio Integracion Flutter';
     this._paymentModelExample?.payboxBase0 =
         double.tryParse(valueController.text) ?? 0;
-    this._paymentModelExample?.payboxBase12 =
-        double.tryParse(valueController.text) ?? 0 * 0.12;
+    this._paymentModelExample?.payboxBase12 = valorFinal;
     this._paymentModelExample?.payboxDescription = 'Pago desde Flutter';
     this._paymentModelExample?.payboxProduction = false;
     this._paymentModelExample?.payboxDirection = addressController.text;
@@ -225,7 +211,6 @@ class _PayFormState extends State<PayForm> {
   obtenerDatos(PagoResponseModel datos) {
     voucher = 'Voucher: ${datos.detail.token}';
     print(voucher);
-    clearInputFields();
     setState(() {});
     print('LLego ' + datos.detail.token);
   }

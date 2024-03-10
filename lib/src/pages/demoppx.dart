@@ -61,7 +61,7 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
                 ),
               ),
               SizedBox(height: responsive.dp(5)), 
-              PayForm(),
+              PayForm(token: token,),
             ],
           ),
         ),

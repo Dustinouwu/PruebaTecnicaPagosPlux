@@ -21,8 +21,9 @@ import 'package:PagoPlux/src/model/response_model.dart';
 class ModalPagoPluxView extends StatelessWidget {
   final PagoPluxModel pagoPluxModel;
   final Function onClose;
+  final String? token;
 
-  ModalPagoPluxView({required this.pagoPluxModel, required this.onClose});
+  ModalPagoPluxView({required this.pagoPluxModel, required this.onClose, required this.token});
   
 
   /*
@@ -51,6 +52,7 @@ class ModalPagoPluxView extends StatelessWidget {
                       icon: Icon(Icons.close_sharp),
                       onPressed: () {
                         Navigator.of(context).pop();
+                        Navigator.pushNamed(context, 'history', arguments: token);
                       }),
                 ],
                 centerTitle: false)),
