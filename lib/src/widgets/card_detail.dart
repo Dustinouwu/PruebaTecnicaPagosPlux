@@ -50,4 +50,4 @@ class TransactionBasicInfo extends StatelessWidget {
   }
 }
 
-// Define TransactionPaymentDetails y TransactionAdditionalDetails de manera similar
+
