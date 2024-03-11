@@ -49,7 +49,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   } else {
                     dynamic responseData = snapshot.data;
                     List<TransaccionModel> transactions = responseData
-                        as List<TransaccionModel>; // Cast to List<dynamic>
+                        as List<TransaccionModel>; 
                     return SizedBox(
                       height: MediaQuery.of(context).size.height,
                       child: ListView.builder(
@@ -169,7 +169,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
       final transactionsData =
           responseData['detail']['transactionsData'] as List<dynamic>;
 
-      // Parse the transactionsData into a list of TransaccionModel objects
       final List<TransaccionModel> transactions =
           transactionsData.map((transactionJson) {
         return TransaccionModel.fromJson(transactionJson);
@@ -178,9 +177,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
       return transactions;
     } else {
       print('Error in authentication: ${response.statusCode}');
-      // Handle authentication errors appropriately
       throw Exception(
-          'Error fetching transactions'); // Or provide a more specific error message
+          'Error fetching transactions'); 
     }
   }
 }
