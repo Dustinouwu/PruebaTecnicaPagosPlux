@@ -18,7 +18,7 @@ class _PayFormState extends State<PayForm> {
   final _formKey = GlobalKey<FormState>();
   PagoPluxModel? _paymentModelExample;
   String voucher = 'Pendiente Pago';
-  // Controladores de los campos de texto|
+  // Controladores de los campos de texto
   final namesController = TextEditingController();
   final telephoneController = TextEditingController();
   final addressController = TextEditingController();

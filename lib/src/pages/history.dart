@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:PagoPlux/src/pages/history_detail.dart';
 import 'package:PagoPlux/src/utils/globals.dart';
+import 'package:PagoPlux/src/model/pay_model.dart';
 
 class HistoryScreen extends StatefulWidget {
   HistoryScreen({super.key});
@@ -15,15 +16,13 @@ class HistoryScreen extends StatefulWidget {
 class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
-  
-   
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: appBarColor,
-        actionsIconTheme: IconThemeData(color: primaryColor),
-        foregroundColor: Colors.black,
-        title: Text('Actividad de transacciones', style: TextStyle(color: Colors.black))
-      ),
+          backgroundColor: appBarColor,
+          actionsIconTheme: IconThemeData(color: primaryColor),
+          foregroundColor: Colors.black,
+          title: Text('Actividad de transacciones',
+              style: TextStyle(color: Colors.black))),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -31,7 +30,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               SizedBox(
                 height: 20,
               ),
-              FutureBuilder(
+              FutureBuilder<List<TransaccionModel>>(
                 future: fetchData(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
@@ -49,8 +48,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     return Text('Error: ${snapshot.error}');
                   } else {
                     dynamic responseData = snapshot.data;
-                    List<dynamic> transactions =
-                        responseData['detail']['transactionsData'];
+                    List<TransaccionModel> transactions = responseData
+                        as List<TransaccionModel>; // Cast to List<dynamic>
                     return SizedBox(
                       height: MediaQuery.of(context).size.height,
                       child: ListView.builder(
@@ -78,19 +77,19 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                 children: [
                                   Row(children: [
                                     Text(
-                                      '${transaction['bancoAdquiriente']}',
+                                      '${transaction.bancoAdquiriente}',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Spacer(),
-                                    Text('${transaction['fecha_transaccion']}'),
+                                    Text('${transaction.fecha_transaccion}'),
                                   ]),
                                   Row(
                                     children: [
                                       Text('Monto: ',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold)),
-                                      Text('${transaction['monto']}'),
+                                      Text('${transaction.monto}'),
                                     ],
                                   ),
                                   Row(
@@ -99,10 +98,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold)),
                                       Text(
-                                        '${transaction['estado_transaccion']}',
+                                        '${transaction.estado_transaccion}',
                                         style: TextStyle(
-                                            color: transaction[
-                                                        'estado_transaccion'] ==
+                                            color: transaction
+                                                        .estado_transaccion ==
                                                     'pagado'
                                                 ? Colors.red
                                                 : Colors.green),
@@ -139,8 +138,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
     );
   }
 
-  Future<dynamic> fetchData() async {
+  Future<List<TransaccionModel>> fetchData() async {
     final String token = ModalRoute.of(context)!.settings.arguments as String;
+    print('Token Recibido: $token');
 
     final Uri url = Uri.parse(
         'https://apipre.pagoplux.com/intv1/integrations/getTransactionsEstablishmentResource');
@@ -165,14 +165,22 @@ class _HistoryScreenState extends State<HistoryScreen> {
     );
 
     if (response.statusCode == 200) {
-      print('Consummo api exitoso');
-      dynamic responseData = jsonDecode(response.body);
-      print(responseData); // Imprime los datos recibidos en la consola
-      return responseData;
+      final responseData = jsonDecode(response.body);
+      final transactionsData =
+          responseData['detail']['transactionsData'] as List<dynamic>;
+
+      // Parse the transactionsData into a list of TransaccionModel objects
+      final List<TransaccionModel> transactions =
+          transactionsData.map((transactionJson) {
+        return TransaccionModel.fromJson(transactionJson);
+      }).toList();
+
+      return transactions;
     } else {
-      print('Error en la autenticación ${response.statusCode}');
-      dynamic responseData = jsonDecode(response.body);
-      print(responseData);
+      print('Error in authentication: ${response.statusCode}');
+      // Handle authentication errors appropriately
+      throw Exception(
+          'Error fetching transactions'); // Or provide a more specific error message
     }
   }
 }

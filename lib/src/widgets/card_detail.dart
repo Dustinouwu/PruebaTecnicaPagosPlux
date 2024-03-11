@@ -1,8 +1,9 @@
+import 'package:PagoPlux/src/model/pay_model.dart';
 import 'package:flutter/material.dart';
 import 'package:PagoPlux/src/utils/globals.dart';
 
 class TransactionBasicInfo extends StatelessWidget {
-  final Map<String, dynamic> transaction;
+  final TransaccionModel transaction;
 
   const TransactionBasicInfo({Key? key, required this.transaction})
       : super(key: key);
@@ -26,12 +27,12 @@ class TransactionBasicInfo extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('\$${transaction['monto']}',
+            Text('\$${transaction.monto}',
                 style: const TextStyle(fontSize: 30)),
             divider(),
-            Text('${transaction['fecha_transaccion']}'),
+            Text('${transaction.fecha_transaccion}'),
             SizedBox(height: 20),
-            Text('Estado: ${transaction['estado_transaccion']}'),
+            Text('Estado: ${transaction.estado_transaccion}'),
             SizedBox(height: 15),
             divider(),
             SizedBox(height: 15),
@@ -39,7 +40,7 @@ class TransactionBasicInfo extends StatelessWidget {
               children: [
                 Text('Número de referencia'),
                 const Spacer(),
-                Text(' ${transaction['numReferencia']}'),
+                Text(' ${transaction.numReferencia}'),
               ],
             ),
           ],

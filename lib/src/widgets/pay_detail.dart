@@ -1,8 +1,9 @@
+import 'package:PagoPlux/src/model/pay_model.dart';
 import 'package:flutter/material.dart';
 import 'package:PagoPlux/src/utils/globals.dart';
 
 class TransactionPaymentDetails extends StatelessWidget {
-  final Map<String, dynamic> transaction;
+ final TransaccionModel transaction;
 
   const TransactionPaymentDetails({Key? key, required this.transaction})
       : super(key: key);
@@ -37,7 +38,7 @@ class TransactionPaymentDetails extends StatelessWidget {
               children: [
                 Text('Nombre de origen'),
                 const Spacer(),
-                Text(' ${transaction['usuarioCreador']}'),
+                Text(' ${transaction.usuarioCreador}'),
               ],
             ),
             SizedBox(height: 10),
@@ -47,7 +48,7 @@ class TransactionPaymentDetails extends StatelessWidget {
               children: [
                 Text('Descripción'),
                 const Spacer(),
-                Text(' ${transaction['descripcion']}'),
+                Text(' ${transaction.descripcion}'),
               ],
             ),
             SizedBox(height: 10),
@@ -57,7 +58,7 @@ class TransactionPaymentDetails extends StatelessWidget {
               children: [
                 Text('N° Identificación'),
                 const Spacer(),
-                Text(' ${transaction['numero_identificacion_cliente']}'),
+                Text(' ${transaction.numero_identificacion_cliente}'),
               ],
             ),
             SizedBox(height: 10),
@@ -67,7 +68,7 @@ class TransactionPaymentDetails extends StatelessWidget {
               children: [
                 Text('N° Teléfono'),
                 const Spacer(),
-                Text(' ${transaction['numero_telefonico_cliente']}'),
+                Text(' ${transaction.numero_telefonico_cliente}'),
               ],
             ),
           ],
@@ -76,5 +77,3 @@ class TransactionPaymentDetails extends StatelessWidget {
     );
   }
 }
-
-// Define TransactionPaymentDetails y TransactionAdditionalDetails de manera similar

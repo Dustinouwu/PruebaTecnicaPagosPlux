@@ -1,8 +1,9 @@
+import 'package:PagoPlux/src/model/pay_model.dart';
 import 'package:flutter/material.dart';
 import 'package:PagoPlux/src/utils/globals.dart';
 
 class TransactionAdditionalDetails extends StatelessWidget {
-  final Map<String, dynamic> transaction;
+  final TransaccionModel transaction;
 
   const TransactionAdditionalDetails({Key? key, required this.transaction})
       : super(key: key);
@@ -37,7 +38,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               children: [
                 Text('Banco'),
                 const Spacer(),
-                Text(' ${transaction['bancoAdquiriente']}'),
+                Text(' ${transaction.bancoAdquiriente}'),
               ],
             ),
             SizedBox(height: 10),
@@ -47,7 +48,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               children: [
                 Text('N° Lote'),
                 const Spacer(),
-                Text(' ${transaction['numLote']}'),
+                Text(' ${transaction.numLote}'),
               ],
             ),
             SizedBox(height: 10),
@@ -57,7 +58,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               children: [
                 Text('N° Autorización'),
                 const Spacer(),
-                Text(' ${transaction['numAutorizacion']}'),
+                Text(' ${transaction.numAutorizacion}'),
               ],
             ),
             SizedBox(height: 10),
@@ -67,7 +68,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               children: [
                 Text('Tipo de pago'),
                 const Spacer(),
-                Text(' ${transaction['tipo_pago']}'),
+                Text(' ${transaction.tipo_pago}'),
               ],
             ),
             // DESDE AQUÍ
@@ -78,7 +79,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               children: [
                 Text('Marca de tarjeta'),
                 const Spacer(),
-                Text(' ${transaction['marcaTarjeta']}'),
+                Text(' ${transaction.marcaTarjeta}'),
               ],
             ),
             // HASTA AQUÍ
@@ -89,7 +90,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               children: [
                 Text('Cuotas'),
                 const Spacer(),
-                Text(' ${transaction['cuotas']}'),
+                Text(' ${transaction.cuotas}'),
               ],
             ),
             SizedBox(height: 10),
@@ -99,7 +100,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               children: [
                 Text('N° Meses de gracia'),
                 const Spacer(),
-                Text(' ${transaction['numMesesGracia']}'),
+                Text(' ${transaction.numMesesGracia}'),
               ],
             ),
             SizedBox(height: 10),
@@ -109,7 +110,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               children: [
                 Text('Interés'),
                 const Spacer(),
-                Text(' ${transaction['tieneInteres']}'),
+                Text(' ${transaction.tieneInteres}'),
               ],
             ),
             SizedBox(height: 10),
@@ -119,7 +120,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               children: [
                 Text('Valor de interés'),
                 const Spacer(),
-                Text(' ${transaction['valorInteres']}'),
+                Text(' ${transaction.valorInteres}'),
               ],
             ),
             SizedBox(height: 10),
@@ -129,7 +130,7 @@ class TransactionAdditionalDetails extends StatelessWidget {
               children: [
                 Text('Res. Estado'),
                 const Spacer(),
-                Text(' ${transaction['resEstado']}'),
+                Text(' ${transaction.resEstado}'),
               ],
             ),
           ],
@@ -138,5 +139,3 @@ class TransactionAdditionalDetails extends StatelessWidget {
     );
   }
 }
-
-// Define TransactionPaymentDetails y TransactionAdditionalDetails de manera similar

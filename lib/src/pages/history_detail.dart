@@ -1,17 +1,18 @@
+import 'package:PagoPlux/src/model/pay_model.dart';
 import 'package:flutter/material.dart';
 import 'package:PagoPlux/src/widgets/add_detail.dart';
 import 'package:PagoPlux/src/widgets/card_detail.dart';
 import 'package:PagoPlux/src/widgets/pay_detail.dart';
 
 class HistoryDetail extends StatelessWidget {
-  final dynamic transaction;
+  final TransaccionModel? transaction;
   const HistoryDetail({required Key key, this.transaction}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Voucher: ${transaction['voucher']}'),
+        title: Text('Voucher: ${transaction?.voucher}'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -19,11 +20,11 @@ class HistoryDetail extends StatelessWidget {
             SizedBox(height: 20),
             Container(
               padding: const EdgeInsets.all(20),
-              child: TransactionBasicInfo(transaction: transaction),
+              child: TransactionBasicInfo(transaction: transaction!),
             ),
-            TransactionPaymentDetails(transaction: transaction),
+            TransactionPaymentDetails(transaction: transaction!),
             SizedBox(height: 20),
-            TransactionAdditionalDetails(transaction: transaction),
+            TransactionAdditionalDetails(transaction: transaction!),
             SizedBox(height: 15),
           ],
         ),

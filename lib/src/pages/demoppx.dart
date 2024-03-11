@@ -27,7 +27,7 @@ class _PayboxDemoPageState extends State<PayboxDemoPage> {
       appBar: AppBar(
         backgroundColor: appBarColor,
         actionsIconTheme: IconThemeData(color: Colors.black),
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         /* foregroundColor: Colors.black, */
         title: 
           SvgPicture.asset(
